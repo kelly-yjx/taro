@@ -20,6 +20,7 @@ const NormalRquestData: Interface.RequestBase = {
 }
 
 
+
 const doRequestAction = (reqData: Interface.Request): Promise<any> => {
   let req: Interface.RequestBase = { ...NormalRquestData, ...reqData }
   return new Promise((resolve, reject) => {

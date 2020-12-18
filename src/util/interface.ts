@@ -13,3 +13,7 @@ export interface RequestHeader{
   'content-type':string
   token?:string
 }
+
+export type Request = {
+  [k in keyof RequestBase]?:RequestBase[k]
+}

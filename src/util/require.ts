@@ -1,16 +1,21 @@
 import Taro from '@tarojs/taro'
 import * as Api from './api'
-import * as Interface from '../util/interface'
+import * as Interface from '../util/interface.d'
 
 
-
+let token = Taro.getStorageSync('token')
+if(token){
+  token = token
+}else{
+  token = ''
+}
 // 使用默认参数，当数据不传入指定字段时替代
 const NormalRquestData: Interface.RequestBase = {
   url: Api.DOMAIN, // 默认请求地址
-  method: 'GET', // 默认get请求
+  method: 'POST', // 默认get请求
   header: { // 默认使用的header头
     "content-type": 'application/x-www-form-urlencoded',
-    token: ''
+    token:token
   },
   data: {}, // 默认没有参数，传入空对象
   loading: true, //默认开启loading层
@@ -28,7 +33,8 @@ const doRequestAction = (reqData: Interface.Request): Promise<any> => {
     Taro.request({
       url: req.url,
       data: req.data,
-      header: req.header
+      header: req.header,
+      method:req.method
     }).then(res => {
       if (res.statusCode == 200) {
         resolve(res.data)
@@ -42,6 +48,25 @@ const doRequestAction = (reqData: Interface.Request): Promise<any> => {
 
   })
 }
+
+export const loginRequest = {
+  //获取token
+  wechatLogin(data:Interface.WECHATLOGIN){
+    return doRequestAction({
+      url:Api.wechatlogin,
+      data
+    })
+  },
+  //更新用户信息
+  getUserInfo(data){
+    return doRequestAction({
+      url:Api.getUserInfo,
+      data
+    })
+  }
+}
+
+
 
 export default doRequestAction
 

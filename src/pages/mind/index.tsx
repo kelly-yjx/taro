@@ -1,23 +1,43 @@
 import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import './index.scss'
+import {getUserInfo} from '../../util/api'
 
 export default class Index extends Component {
 
-  componentWillMount () { }
+  componentWillMount () { 
+    // getUserInfo().then(res=>{console.log(res)})
+    console.log(1)
+  }
 
-  componentDidMount () { }
+  componentDidMount () { 
+    console.log(2)
+  }
 
-  componentWillUnmount () { }
+  componentWillUnmount () {
+    console.log(3)
+   }
 
-  componentDidShow () { }
+  componentDidShow () {
+    console.log(4)
+
+   }
  
-  componentDidHide () { }
+  componentDidHide () {
+    console.log(5)
+
+   }
+   ToLogin(){
+    Taro.navigateTo({
+      url:'/pages/mind/login/index'
+    })
+   }
 
   render () {
     return (
       <View className='index'>
-        <Text>mind</Text>
+        <Text onClick={this.ToLogin}>登录</Text>
       </View>
     )
   }

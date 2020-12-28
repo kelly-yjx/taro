@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "wangyu",
   "description": "网寓入住",
-  "appid": "touristappid",
+  "appid": "wx5f73ded47e29c7f4",
   "setting": {
     "urlCheck": true,
     "es6": false,

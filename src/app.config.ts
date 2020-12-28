@@ -1,15 +1,16 @@
 export default {
   pages: [
+    'pages/mind/index',
     'pages/index/index',
     'pages/room/index',
     'pages/order/index',
-    'pages/mind/index'
+    'pages/mind/login/index'
   ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fac652',
     navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
+    navigationBarTextStyle: 'white'
   },
   tabBar: {
     color: "#808080",

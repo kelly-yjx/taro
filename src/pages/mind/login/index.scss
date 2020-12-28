@@ -1,0 +1,45 @@
+
+
+.img {
+  width: 167rpx;
+  height: 220rpx;
+  margin: 0 auto;
+
+  margin-top: 147rpx;
+  image {
+    width: 167rpx;
+    height: 220rpx;
+  }
+}
+.btn{
+  padding: 0 28rpx;
+  margin-top: 250rpx;
+  .long-btn{
+    height: 80rpx;
+    font-size: 30rpx;
+  }
+  .no-login{
+    margin-top: 10rpx;
+    line-height: 80rpx;
+    color: #595757;
+  }
+}
+
+.footer{
+  width: 300rpx;
+  margin: 0 auto;
+	font-size: 20rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	line-height: 35rpx;
+  letter-spacing: 0rpx;
+  position: absolute;
+  color: #a9a9ad;
+  bottom: 100rpx;
+  left: 50%;
+  transform: translateX(-50%);
+   image{
+    width: 22rpx;
+    height: 19rpx;
+  }
+}

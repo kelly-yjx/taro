@@ -1,0 +1,27 @@
+@import './style/common.scss';
+
+View{
+  -webkit-overflow-scrolling: touch;    
+}
+page,view,image,text,input,button{
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+}
+page,.com{
+  --theme: #fca652;
+
+  --colorb3b:#b3b3b3;
+  --color808:#808080;
+  --color4d4:#4d4d4d;
+
+}
+page{
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  overflow: hidden;
+  font-size: 26rpx;
+  color:#4c4c4c;
+  -webkit-overflow-scrolling: touch;    
+}

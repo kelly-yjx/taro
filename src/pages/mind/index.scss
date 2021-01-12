@@ -1,3 +1,168 @@
-.index{
-  color:red;
+.index {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 206rpx;
+
+  // overflow: auto;
+  .header {
+    width: 100%;
+    height: 407rpx;
+    position: absolute;
+    background-image: url('../../images/035.png');
+    background-size: 100% 100%;
+    left: 0;
+    top: 0;
+
+    .title {
+      position: absolute;
+      font-size: 30rpx;
+      color: #FFF;
+      top: 67rpx;
+      left: 28rpx;
+    }
+
+    .top {
+      position: fixed;
+      left: 28rpx;
+      top: 206rpx;
+      width: 694rpx;
+      height: 367rpx;
+      padding: 0 28rpx;
+      background: #fff;
+      border-radius: 6rpx;
+      box-sizing: border-box;
+      box-shadow: 1rpx 19rpx 16rpx -4rpx #e5e5e5;
+
+      .top-user {
+        width: 100%;
+        height: 173rpx;
+
+        .img {
+          width: 117rpx;
+          height: 117rpx;
+
+          image {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .name {
+          height: 100rpx;
+          margin-left: 28rpx;
+
+          .name-top {
+            .isAuth {
+              width: 82rpx;
+              height: 32rpx;
+              background: rgba(252, 166, 82, 0.2);
+              text-align: center;
+              line-height: 32rpx;
+              font-size: 22rpx;
+              color: var(--theme);
+            }
+          }
+        }
+      }
+
+      .static-data {
+        height: 70rpx;
+        padding-bottom: 38rpx;
+
+        .num {
+          font-size: 34rpx;
+          line-height: 34rpx;
+          font-weight: bold;
+        }
+      }
+
+      .select-store {
+        height: 80rpx;
+
+        .add-store {
+          height: 100%;
+
+          .iconadd1 {
+            font-size: 28rpx;
+            padding-left: 10rpx;
+          }
+
+          .iconroomStatetrueDown01 {
+            color: #808080;
+            font-size: 16rpx;
+            padding-left: 10rpx;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    padding-top: 364rpx;
+    box-sizing: border-box;
+
+    .tab-list {
+      width: 680rpx;
+      margin: 0 auto;
+      height: 100rpx;
+      padding: 30rpx 0;
+      margin-top: 28rpx;
+
+      .li {
+        width: 160rpx;
+        height: 100rpx;
+
+        image {
+          width: 50rpx;
+          height: 50rpx;
+        }
+      }
+    }
+
+    .nav-list {
+      width: 680rpx;
+      margin: 0 auto;
+      margin-top: 28rpx;
+      box-sizing: border-box;
+
+      .li {
+        height: 88rpx;
+        line-height: 88rpx;
+
+        .icon {
+          color: var(--theme);
+          font-size: 36rpx;
+
+        }
+
+        .static-icon {
+          font-size: 20rpx;
+          color: #ccc;
+        }
+      }
+    }
+  }
+
+  .change-to-record {
+    width: 100%;
+    height: 80rpx;
+    background: #FFF;
+    text-align: center;
+    line-height: 80rpx;
+    margin-top: 28rpx;
+    margin-bottom: 50rpx;
+    box-shadow: 0rpx 0rpx 15rpx 10rpx rgba($color: #000000, $alpha: 0.06);
+  }
+}
+
+.pl-26 {
+  padding-left: 26rpx;
+}
+
+.pl-5 {
+  padding-left: 5rpx;
 }

@@ -15,7 +15,7 @@ export default {
   tabBar: {
     color: "#808080",
     selectedColor: "#fca652",
-    borderStyle:"white",
+    borderStyle:"black",
     list: [
       {
         pagePath: "pages/index/index",

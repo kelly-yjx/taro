@@ -30,7 +30,7 @@ export default class Index extends Component {
   }
 
   componentDidHide() { }
-
+// 登录
   login() {
     let data: WECHATLOGIN = {
       user_type: 'owner',
@@ -49,6 +49,7 @@ export default class Index extends Component {
     })
     console.log(this.state)
   }
+  //获取手机号
   async getPhoneNumber(e: { detail: any }){
     console.log(this)
     let self = this
@@ -71,6 +72,13 @@ export default class Index extends Component {
     }
   }
 
+  //暂不登录
+  noLogin(){
+    Taro.navigateBack({
+      delta:1
+    })
+  }
+
   render() {
     return (
       <View className='index'>
@@ -79,7 +87,7 @@ export default class Index extends Component {
         </View>
         <View className="btn">
           <Button type='primary' className="long-btn" openType="getPhoneNumber" onGetPhoneNumber={this.getPhoneNumber.bind(this)}>登录</Button>
-          <View className="long-btn no-login">暂不登录</View>
+          <View className="long-btn no-login" onClick={this.noLogin}>暂不登录</View>
         </View>
         <View className="footer flex-mid-mid">
           <Text className="">兴民智能提供服务</Text>

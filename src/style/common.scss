@@ -1,12 +1,124 @@
-
-
-.long-btn{
+.long-btn {
   width: 100%;
   text-align: center;
 }
 
-.flex-mid-mid{
+.flex-mid-mid {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.flex-sb{
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-mid {
+  display: flex;
+  align-items: center;
+}
+
+.flex-col-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.flex-col-mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+// 字体
+.fs-20 {
+  font-size: 20rpx;
+}
+
+.fs-22 {
+  font-size: 22rpx;
+}
+
+.fs-24 {
+  font-size: 24rpx;
+}
+
+.fs-26 {
+  font-size: 26rpx;
+}
+
+.fs-28 {
+  font-size: 28rpx;
+}
+
+.fs-30 {
+  font-size: 30rpx;
+}
+
+.fs-32 {
+  font-size: 32rpx;
+}
+
+.fs-34 {
+  font-size: 34rpx;
+}
+
+.fs-36 {
+  font-size: 36rpx;
+}
+
+.fs-38 {
+  font-size: 38rpx;
+}
+
+.fs-40 {
+  font-size: 40rpx;
+}
+
+.fs-42 {
+  font-size: 42rpx;
+}
+
+.fs-44 {
+  font-size: 44rpx;
+}
+
+.fs-46 {
+  font-size: 46rpx;
+}
+
+.fs-48 {
+  font-size: 48rpx;
+}
+
+.fs-50 {
+  font-size: 50rpx;
+}
+
+.fs-52 {
+  font-size: 52rpx;
+}
+
+//颜色
+.c-b3b{
+  color:#b3b3b3;
+}
+.c-808{
+  color: #808080;
+}
+.c-4c4{
+  color: #4c4c4c;
+}
+.box-shadow {
+  box-shadow: 0rpx 3rpx 19rpx 0rpx #e5e5e5;
+}
+.border1{
+  border-bottom:solid #e5e5e5 1rpx;
+}
+.list{
+  padding:0 28rpx;
+  box-shadow: 0rpx 3rpx 19rpx 0rpx #e5e5e5;
+  border-radius: 6rpx;
 }

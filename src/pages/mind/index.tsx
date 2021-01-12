@@ -25,7 +25,7 @@ export default class Index extends Component<stateType, any> {
         {text:'房东指南',icon:'iconmeGuide'},
         {text:'反馈意见',icon:'iconfeedbackfk'},
         {text:'联系我们',icon:'iconcontactusfk'},
-        {text:'关于我们',icon:'iconaboutusfk'}
+        {text:'关于我们',icon:'iconaboutusfk' }
       ]
     }
   }

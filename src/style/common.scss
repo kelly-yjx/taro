@@ -8,6 +8,11 @@
   align-items: center;
   justify-content: center;
 }
+.flex-mid-sb{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .flex-sb{
   display: flex;
   justify-content: space-between;
@@ -30,7 +35,14 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.line1{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break:break-all;
+}
 
 // 字体
 .fs-20 {
@@ -122,3 +134,11 @@
   box-shadow: 0rpx 3rpx 19rpx 0rpx #e5e5e5;
   border-radius: 6rpx;
 }
+
+.pl-20{
+  padding-left: 20rpx;
+}
+.pr-10{
+  padding-right: 10rpx;
+}
+

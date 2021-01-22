@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: '房源'
+  navigationBarTitleText: '房源',
 }

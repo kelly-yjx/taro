@@ -4,39 +4,53 @@ import {
 } from '@tarojs/components'
 import Taro from "@tarojs/taro"
 import './index.scss'
-import { getUserInfo } from '../../util/api'
+import { loginRequest } from '../../util/require'
 
 interface stateType {
-  isShow: boolean
+  isShow: boolean,
+  state:object
 }
 export default class Index extends Component<stateType, any> {
-  constructor(props: stateType | Readonly<stateType>) {
+  constructor(props: stateType) {
     super(props)
     this.state = {
+      userInfo:{},
       isShow: false,
       tabList: [
         { name: '房型管理', img: require('../../images/meRomMng.png') },
         { name: '门店管理', img: require('../../images/meStoreManger.png') },
         { name: '订单日志', img: require('../../images/meOderMasg.png') },
       ],
-      navList:[
-        {text:'打印门贴',icon:'iconmePrintPose'},
-        {text:'开具发票',icon:'iconmeDrawBill'},
-        {text:'房东指南',icon:'iconmeGuide'},
-        {text:'反馈意见',icon:'iconfeedbackfk'},
-        {text:'联系我们',icon:'iconcontactusfk'},
-        {text:'关于我们',icon:'iconaboutusfk' }
-      ]
+      navList: [
+        { text: '打印门贴', icon: 'iconmePrintPose' },
+        { text: '开具发票', icon: 'iconmeDrawBill' },
+        { text: '房东指南', icon: 'iconmeGuide' },
+        { text: '反馈意见', icon: 'iconfeedbackfk' },
+        { text: '联系我们', icon: 'iconcontactusfk' },
+        { text: '关于我们', icon: 'iconaboutusfk' }
+      ],
+      
     }
   }
-  componentDidMount() {
-    console.log(this.state.isShow)
-    console.log(this.state.tabList)
+  componentDidShow() {
+    this.getUserMsg()
   }
   ToLogin() {
     Taro.navigateTo({
       url: '/pages/mind/login/index'
     })
+  }
+  async getUserMsg() {
+    let opt = {
+      user_type: 'owner'
+    }
+    let res = await loginRequest.getUserInfo(opt)
+   this.setState({
+     userInfo:res.data
+   })
+  }
+  getUserInfo(e){
+    console.log(e)
   }
   render() {
     return (
@@ -51,15 +65,27 @@ export default class Index extends Component<stateType, any> {
               </View>
               <View className='name flex-col-start'>
                 <View className='name-top flex-mid'>
-                  <Text className='fs-34 c-4c4'>HI</Text>
-                  <Text className='pl-26 fs-34 c-4c4'>张三</Text>
-                  <View className='to-Pauth flex-mid pl-26'>
+                  <View style={{ display: (!this.state.userInfo.nickname && !this.state.userInfo.idcardname) ? '' : 'none' }}>
+                    <View className='login-btn flex-mid' onClick={this.ToLogin}>点击登录</View>
+                  </View>
+                  <View style={{ display: (!this.state.userInfo.nickname&&this.state.userInfo.idcardname) ? '' : 'none' }}>
+                    <Button openType='getUserInfo' onGetUserInfo={this.getUserInfo} className='pl-10'>点击获取微信昵称</Button>
+                  </View>
+                  <View style={{ display: (this.state.userInfo.nickname&&!this.state.userInfo.idcardname) ? '' : 'none' }}>
+                     <Text className='fs-34 c-4c4'>HI</Text>
+                    <Text className='pl-26 fs-34 c-4c4'>{this.state.userInfo.nickname}</Text>
+                  </View>
+                  <View style={{ display: (this.state.userInfo.idcardname) ? '' : 'none' }}>
+                     <Text className='fs-34 c-4c4'>HI</Text>
+                    <Text className='pl-26 fs-34 c-4c4'>{this.state.userInfo.idcardname}</Text>
+                  </View>
+                  <View className='to-Pauth flex-mid pl-26' style={{ display: (this.state.isLogin) ? '' : 'none' }}>
                     <Text className='fs-26 c-b3b'>去认证</Text>
                     <Text className='icon c-b3b iconback1 pl-5'></Text>
                   </View>
-                  <View className='isAuth'>已认证</View>
+                  <View className='isAuth' style={{ display: (this.state.userInfo.isCert) ? '' : 'none' }}>已认证</View>
                 </View>
-                <View className='phone fs-26'>15107049757</View>
+                <View className='phone fs-26' style={{ display: (this.state.userInfo.mobile) ? '' : 'none' }}>{this.state.userInfo.mobile}</View>
               </View>
             </View>
             {/* 今日数据 */}
@@ -92,7 +118,7 @@ export default class Index extends Component<stateType, any> {
         </View>
         <View className='content'>
           <View className='tab-list list flex-sb'>
-            {this.state.tabList.map((item, index:number) => {
+            {this.state.tabList.map((item, index: number) => {
               return <View key={index} className='li flex-col-mid'>
                 <Image src={item.img} />
                 <Text>{item.name}</Text>
@@ -100,11 +126,15 @@ export default class Index extends Component<stateType, any> {
             })}
           </View>
           <View className='nav-list list '>
-            {this.state.navList.map((item,index:number)=>{
-              return <View key={index} className='li flex-mid'>
-                <Text className={'icon'+' '+ item.icon}></Text>
-                <Text>{item.text}</Text>
-                <Text className='icon static-icon iconback1'></Text>
+            {this.state.navList.map((item, index: number) => {
+              return <View key={index} className='li flex-sb'>
+                <View className='flex-mid'>
+                  <Text className={'icon' + ' ' + item.icon}></Text>
+                  <Text className='pl-20'>{item.text}</Text>
+                </View>
+                <View>
+                  <Text className='icon static-icon iconback1'></Text>
+                </View>
               </View>
             })}
           </View>

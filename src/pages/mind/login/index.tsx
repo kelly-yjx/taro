@@ -120,6 +120,7 @@ export default class Index extends Component<stateType, any> {
         </View>
         <View className='footer flex-mid-mid'>
           <Text className=''>兴民智能提供服务</Text>
+          
         </View>
       </View>
     )

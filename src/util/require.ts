@@ -61,7 +61,7 @@ export const loginRequest = {
   //更新用户信息
   userInfo(data) {
     return doRequestAction({
-      url: Api.getUserInfo,
+      url: Api.userInfo,
       data
     })
   },

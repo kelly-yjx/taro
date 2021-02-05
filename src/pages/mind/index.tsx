@@ -8,13 +8,13 @@ import { loginRequest } from '../../util/require'
 
 interface stateType {
   isShow: boolean,
-  state:object
+  state: object
 }
 export default class Index extends Component<stateType, any> {
   constructor(props: stateType) {
     super(props)
     this.state = {
-      userInfo:{},
+      userInfo: {},
       isShow: false,
       tabList: [
         { name: '房型管理', img: require('../../images/meRomMng.png') },
@@ -29,11 +29,12 @@ export default class Index extends Component<stateType, any> {
         { text: '联系我们', icon: 'iconcontactusfk' },
         { text: '关于我们', icon: 'iconaboutusfk' }
       ],
-      
+
     }
   }
-  componentDidShow() {
-    this.getUserMsg()
+  async componentDidShow() {
+    await this.getUserMsg()
+    await console.log(this.state)
   }
   ToLogin() {
     Taro.navigateTo({
@@ -45,11 +46,11 @@ export default class Index extends Component<stateType, any> {
       user_type: 'owner'
     }
     let res = await loginRequest.getUserInfo(opt)
-   this.setState({
-     userInfo:res.data
-   })
+    this.setState({
+      userInfo: res.data
+    })
   }
-  getUserInfo(e){
+  getUserInfo(e) {
     console.log(e)
   }
   render() {
@@ -68,22 +69,22 @@ export default class Index extends Component<stateType, any> {
                   <View style={{ display: (!this.state.userInfo.nickname && !this.state.userInfo.idcardname) ? '' : 'none' }}>
                     <View className='login-btn flex-mid' onClick={this.ToLogin}>点击登录</View>
                   </View>
-                  <View style={{ display: (!this.state.userInfo.nickname&&this.state.userInfo.idcardname) ? '' : 'none' }}>
+                  <View style={{ display: (!this.state.userInfo.nickname && this.state.userInfo.idcardname) ? '' : 'none' }}>
                     <Button openType='getUserInfo' onGetUserInfo={this.getUserInfo} className='pl-10'>点击获取微信昵称</Button>
                   </View>
-                  <View style={{ display: (this.state.userInfo.nickname&&!this.state.userInfo.idcardname) ? '' : 'none' }}>
-                     <Text className='fs-34 c-4c4'>HI</Text>
-                    <Text className='pl-26 fs-34 c-4c4'>{this.state.userInfo.nickname}</Text>
+                  <View style={{ display: (this.state.userInfo.nickname && !this.state.userInfo.idcardname) ? '' : 'none' }}>
+                    <Text className='fs-34 c-4c4'>HI</Text>
+                    <Text className='pl-10 fs-34 c-4c4'>{this.state.userInfo.nickname}</Text>
                   </View>
                   <View style={{ display: (this.state.userInfo.idcardname) ? '' : 'none' }}>
-                     <Text className='fs-34 c-4c4'>HI</Text>
-                    <Text className='pl-26 fs-34 c-4c4'>{this.state.userInfo.idcardname}</Text>
+                    <Text className='fs-34 c-4c4'>HI</Text>
+                    <Text className='pl-10 fs-34 c-4c4'>{this.state.userInfo.idcardname}</Text>
                   </View>
-                  <View className='to-Pauth flex-mid pl-26' style={{ display: (this.state.isLogin) ? '' : 'none' }}>
+                  <View className='to-Pauth flex-mid pl-10' style={{ display: (this.state.userInfo.user_id && !this.state.userInfo.is_cert) ? '' : 'none' }}>
                     <Text className='fs-26 c-b3b'>去认证</Text>
                     <Text className='icon c-b3b iconback1 pl-5'></Text>
                   </View>
-                  <View className='isAuth' style={{ display: (this.state.userInfo.isCert) ? '' : 'none' }}>已认证</View>
+                  <View className='isAuth' style={{ display: (this.state.userInfo.is_cert) ? '' : 'none' }}>已认证</View>
                 </View>
                 <View className='phone fs-26' style={{ display: (this.state.userInfo.mobile) ? '' : 'none' }}>{this.state.userInfo.mobile}</View>
               </View>
@@ -130,7 +131,7 @@ export default class Index extends Component<stateType, any> {
               return <View key={index} className='li flex-sb'>
                 <View className='flex-mid'>
                   <Text className={'icon' + ' ' + item.icon}></Text>
-                  <Text className='pl-20'>{item.text}</Text>
+                  <Text className='pl-10'>{item.text}</Text>
                 </View>
                 <View>
                   <Text className='icon static-icon iconback1'></Text>

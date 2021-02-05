@@ -9,6 +9,11 @@ export const Toast = (title: any, duration = 1500, mask = true, icon: any = 'non
         icon
     })
 }
+export const Loading = (title: string) => {
+    Taro.showLoading({
+        title
+    })
+}
 // 设置缓存
 export const setStorage = (name: string, data: any) => {
     try {
